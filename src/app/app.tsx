@@ -1,5 +1,7 @@
+import { Search } from '../features/search/search.tsx';
+
 function App() {
-  return <div>Hello World</div>;
+  return <Search value={'hello'} onChange={() => console.log('hello')} />;
 }
 
 export { App };
