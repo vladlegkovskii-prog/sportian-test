@@ -36,7 +36,15 @@ function usePlayers() {
     }
   } // direct index access, no iterator overhead
 
-  return { players, isPending, isError, refetch, fetchNextPage, hasNextPage, isFetchingNextPage };
+  return {
+    players,
+    isPending,
+    isError,
+    refetch,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  };
 }
 
 export { usePlayers };

@@ -8,7 +8,7 @@ function calculateAge(birthdate: Player['birthdate']): string {
   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
     age--;
   }
-  return `${age} YRS`;
+  return `${age} yrs`;
 }
 
 export { calculateAge };

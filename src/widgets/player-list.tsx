@@ -1,7 +1,7 @@
-import { Box, Container, Grid } from '@mui/material';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
+import { Box, List, ListItem } from '@mui/material';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import { usePlayers } from '../entities/player/api/use-players.ts';
-import type { Player } from '../entities/player/model/types.ts';
 import { NoPlayersFound } from '../entities/player/ui/no-players-found.tsx';
 import { PlayerCard } from '../entities/player/ui/player-card.tsx';
 import { PlayersSearchError } from '../entities/player/ui/players-search-error.tsx';
@@ -11,13 +11,10 @@ import { ViewPlayerDetails } from '../features/view-player-details/ui/view-playe
 import { InfiniteScrollGuard } from '../shared/ui/infinite-scroll-guard.tsx';
 
 function PlayerList() {
+  const scrollReference = useRef<HTMLDivElement>(null);
   const { value, onChange } = useSearch();
   const { players, isPending, isError, refetch, fetchNextPage, hasNextPage, isFetchingNextPage } =
     usePlayers();
-
-  const handlePlayerSearchReset = () => {
-    onChange('');
-  };
 
   const filteredPlayers = useMemo(() => {
     if (value === '') {
@@ -28,6 +25,18 @@ function PlayerList() {
       return fullName.includes(value.toLowerCase());
     });
   }, [players, value]);
+
+  const virtualiser = useVirtualizer({
+    count: filteredPlayers.length,
+    estimateSize: () => 164,
+    getScrollElement: () => scrollReference.current,
+  });
+
+  const virtualisedPlayers = virtualiser.getVirtualItems();
+
+  const handlePlayerSearchReset = () => {
+    onChange('');
+  };
 
   if (isPending) {
     return (
@@ -52,29 +61,45 @@ function PlayerList() {
       </Box>
     );
   }
+
   return (
-    <Container maxWidth="lg" sx={{ p: 4 }}>
-      <Grid container spacing={3}>
-        {filteredPlayers.map((player: Player) => (
-          <Grid
-            key={player.id}
-            size={{
-              xs: 12,
-              sm: 6,
-              md: 4,
-            }}
-          >
-            <ViewPlayerDetails player={player}>
-              <PlayerCard player={player} />
-            </ViewPlayerDetails>
-          </Grid>
-        ))}
-      </Grid>
+    <Box
+      sx={{ p: 4, height: '90vh', overflowY: 'auto', width: '100%', position: 'relative' }}
+      ref={scrollReference}
+    >
+      <List
+        sx={{
+          height: `${virtualiser.getTotalSize()}px`,
+          width: '100%',
+          position: 'relative',
+        }}
+      >
+        {virtualisedPlayers.map((virtualItem) => {
+          const player = filteredPlayers[virtualItem.index];
+          return (
+            <ListItem
+              key={virtualItem.key}
+              sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: `${virtualItem.size}px`,
+                transform: `translateY(${virtualItem.start}px)`,
+              }}
+            >
+              <ViewPlayerDetails player={player}>
+                <PlayerCard player={player} />
+              </ViewPlayerDetails>
+            </ListItem>
+          );
+        })}
+      </List>
       <InfiniteScrollGuard
         onIntersect={fetchNextPage}
         enabled={hasNextPage && !isFetchingNextPage && !value}
       />
-    </Container>
+    </Box>
   );
 }
 

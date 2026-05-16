@@ -1,4 +1,4 @@
-import { Box, Paper, Stack, Skeleton, CircularProgress, Typography, Grid } from '@mui/material';
+import { Box, Paper, Stack, Skeleton, CircularProgress, Typography } from '@mui/material';
 
 function PlayersSkeleton() {
   const skeletons = [1, 2, 3];
@@ -24,39 +24,36 @@ function PlayersSkeleton() {
         </Typography>
       </Box>
       <Box sx={{ opacity: 0.4 }}>
-        <Grid component="article" container spacing={3} sx={{ justifyContent: 'center' }}>
+        <Stack spacing={2}>
           {skeletons.map((item) => (
-            <Grid key={item} size={{ xs: 12, sm: 4 }}>
-              <Paper
-                elevation={0}
-                sx={{
-                  p: 2,
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  borderRadius: (theme) => `${theme.shape.borderRadius}px`,
-                  bgcolor: 'background.paper',
-                }}
-              >
-                <Stack spacing={2}>
-                  <Skeleton variant="rounded" height={200} sx={{ bgcolor: '#F5F5F5' }} />
-                  <Box>
-                    <Skeleton variant="text" width="80%" height={32} />
-                    <Stack direction="row" spacing={2} sx={{ mt: 1 }}>
-                      <Box sx={{ width: '40%' }}>
-                        <Skeleton variant="text" width="30%" />
-                        <Skeleton variant="text" width="100%" height={24} />
-                      </Box>
-                      <Box sx={{ width: '40%' }}>
-                        <Skeleton variant="text" width="30%" />
-                        <Skeleton variant="text" width="100%" height={24} />
-                      </Box>
+            <Paper
+              key={item}
+              elevation={0}
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+              }}
+            >
+              <Skeleton variant="rectangular" width={120} height={100} />
+              <Box sx={{ flex: 1, p: 2 }}>
+                <Stack spacing={1}>
+                  <Stack
+                    direction="row"
+                    sx={{ justifyContent: 'space-between', alignItems: 'center' }}
+                  >
+                    <Stack direction="row" spacing={1} sx={{ alignItems: 'baseline' }}>
+                      <Skeleton variant="text" width={150} height={32} />
+                      <Skeleton variant="text" width={30} height={24} />
                     </Stack>
-                  </Box>
+                    <Skeleton variant="text" width={40} height={32} />
+                  </Stack>
+                  <Skeleton variant="text" width={100} height={20} />
+                  <Skeleton variant="text" width={120} height={16} />
                 </Stack>
-              </Paper>
-            </Grid>
+              </Box>
+            </Paper>
           ))}
-        </Grid>
+        </Stack>
       </Box>
     </Box>
   );
