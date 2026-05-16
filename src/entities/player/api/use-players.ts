@@ -1,19 +1,42 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import type { EaApiResponse } from '../../../shared/model/types.ts';
+import type { Player } from '../model/types.ts';
 
-export const usePlayers = () => {
-  const { data, isPending, isError, refetch } = useQuery<EaApiResponse>({
-    queryKey: ['players'],
-    queryFn: () =>
-      fetch('https://drop-api.ea.com/rating/ea-sports-fc?locale=en&limit=30').then((res) =>
-        res.json()
-      ),
-  });
+const LIMIT = 30;
 
-  return {
-    players: data?.items || [],
-    isPending,
-    isError,
-    refetch,
-  };
+const fetchPlayers = async ({ pageParam }: { pageParam: number }): Promise<EaApiResponse> => {
+  const response = await fetch(
+    `https://drop-api.ea.com/rating/ea-sports-fc?locale=en&limit=30&offset=${pageParam}`
+  );
+
+  return response.json();
 };
+
+function usePlayers() {
+  const { data, isPending, isError, refetch, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ['players'],
+      queryFn: fetchPlayers,
+      initialPageParam: 0,
+      getNextPageParam: (lastPage, _, lastPageParam) => {
+        const nextOffset = lastPageParam + LIMIT;
+        if (nextOffset >= lastPage.totalItems) {
+          return;
+        }
+        return nextOffset;
+      },
+    });
+
+  const players: Player[] = [];
+  if (data?.pages) {
+    for (let i = 0; i < data.pages.length; i++) {
+      for (let j = 0; j < data.pages[i].items.length; j++) {
+        players.push(data.pages[i].items[j]);
+      }
+    }
+  } // direct index access, no iterator overhead
+
+  return { players, isPending, isError, refetch, fetchNextPage, hasNextPage, isFetchingNextPage };
+}
+
+export { usePlayers };

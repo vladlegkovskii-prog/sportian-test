@@ -8,10 +8,12 @@ import { PlayersSearchError } from '../entities/player/ui/players-search-error.t
 import { PlayersSkeleton } from '../entities/player/ui/players-skeleton.tsx';
 import { useSearch } from '../features/search/model/search-context.tsx';
 import { ViewPlayerDetails } from '../features/view-player-details/ui/view-player-details.tsx';
+import { InfiniteScrollGuard } from '../shared/ui/infinite-scroll-guard.tsx';
 
 function PlayerList() {
   const { value, onChange } = useSearch();
-  const { players, isPending, isError, refetch } = usePlayers();
+  const { players, isPending, isError, refetch, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    usePlayers();
 
   const handlePlayerSearchReset = () => {
     onChange('');
@@ -68,6 +70,10 @@ function PlayerList() {
           </Grid>
         ))}
       </Grid>
+      <InfiniteScrollGuard
+        onIntersect={fetchNextPage}
+        enabled={hasNextPage && !isFetchingNextPage && !value}
+      />
     </Container>
   );
 }
