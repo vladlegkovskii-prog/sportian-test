@@ -11,7 +11,6 @@ function InfiniteScrollGuard(props: InfiniteScrollGruardProps) {
   const guardComponent = useRef(null);
 
   useEffect(() => {
-    console.log('running', enabled);
     if (!enabled) {
       return;
     }
