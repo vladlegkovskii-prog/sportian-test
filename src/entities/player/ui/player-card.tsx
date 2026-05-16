@@ -31,12 +31,9 @@ export function PlayerCard(props: PlayerCardProps) {
         <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
           <Stack sx={{ flex: 1 }}>
             <Stack direction="row" sx={{ justifyContent: 'space-between' }}>
-              <Stack direction="row" sx={{ gap: 1, alignItems: 'baseline' }}>
-                <Typography variant="h5" sx={{ fontWeight: 700 }}>
-                  {player.commonName || `${player.firstName} ${player.lastName}`}
-                </Typography>
-                <Typography>{player.position.shortLabel}</Typography>
-              </Stack>
+              <Typography variant="h5" sx={{ fontWeight: 700 }}>
+                {player.commonName || `${player.firstName} ${player.lastName}`}
+              </Typography>
               <Box
                 sx={{
                   px: 1.5,
@@ -47,9 +44,14 @@ export function PlayerCard(props: PlayerCardProps) {
                 <Typography variant="caption">OVR</Typography>
               </Box>
             </Stack>
-            <Typography color="text.secondary">
-              {age} • {player.height}cm
-            </Typography>
+            <Stack direction="row" spacing={1}>
+              <Typography sx={{ bgcolor: 'background.default' }}>
+                {player.position.shortLabel}
+              </Typography>
+              <Typography color="text.secondary">
+                {age} • {player.height}cm
+              </Typography>
+            </Stack>
             <Typography variant="caption">{player.team.label}</Typography>
           </Stack>
         </Stack>
