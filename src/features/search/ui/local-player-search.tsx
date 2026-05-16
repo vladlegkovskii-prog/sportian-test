@@ -1,20 +1,22 @@
 import React from 'react';
 import { TextField, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { useSearch } from '../model/search-context.tsx';
 
-interface SearchProps {
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+function LocalPlayerSearch() {
+  const { value, onChange } = useSearch();
 
-function Search({ value, onChange }: SearchProps) {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(event.target.value);
+  };
+
   return (
     <TextField
       fullWidth
       variant="outlined"
-      placeholder="Search players..."
+      placeholder="Local player search..."
       value={value}
-      onChange={onChange}
+      onChange={handleChange}
       size="small"
       slotProps={{
         input: {
@@ -27,10 +29,10 @@ function Search({ value, onChange }: SearchProps) {
       }}
       sx={{
         '& .MuiOutlinedInput-root': {
-          bgcolor: 'backgroud.default',
+          bgcolor: 'background.default',
           borderRadius: (theme) => `${theme.shape.borderRadius}px`,
           '& fieldset': {
-            borderColor: '#E0E0E0',
+            borderColor: 'divider',
           },
           '&:hover fieldset': {
             borderColor: 'secondary.main',
@@ -44,4 +46,4 @@ function Search({ value, onChange }: SearchProps) {
   );
 }
 
-export { Search };
+export { LocalPlayerSearch };

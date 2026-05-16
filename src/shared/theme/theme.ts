@@ -12,6 +12,7 @@ const theme = createTheme({
       default: '#F5F5F5',
       paper: '#FFFFFF',
     },
+    divider: '#E0E0E0',
   },
   shape: {
     borderRadius: 6,
