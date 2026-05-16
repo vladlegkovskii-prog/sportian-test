@@ -1,11 +1,11 @@
 import { Alert, AlertTitle, Button, Box } from '@mui/material';
 import ErrorIcon from '@mui/icons-material/Error';
 
-type PlayerErrorProps = {
+type PlayersSearchErrorProps = {
   onClick: () => void;
 };
 
-function PlayerError(props: PlayerErrorProps) {
+function PlayersSearchError(props: PlayersSearchErrorProps) {
   const { onClick } = props;
   return (
     <Box>
@@ -26,4 +26,4 @@ function PlayerError(props: PlayerErrorProps) {
   );
 }
 
-export { PlayerError };
+export { PlayersSearchError };

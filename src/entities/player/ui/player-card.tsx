@@ -49,13 +49,13 @@ export function PlayerCard(props: PlayerCardProps) {
 
       <CardContent>
         <Stack spacing={1}>
-          <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <Stack direction="row" sx={{ justifyContent: 'space-between' }}>
             <Typography variant="h6" sx={{ fontWeight: 800, lineHeight: 1.2 }}>
               {player.commonName || `${player.firstName} ${player.lastName}`}
             </Typography>
             <Typography>{player.position.shortLabel}</Typography>
           </Stack>
-          <Typography color="text.secondary">
+          <Typography color="text.secondary" align="left">
             {age} yrs • {player.height} cm
           </Typography>
           <Divider />
