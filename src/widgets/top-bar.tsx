@@ -42,4 +42,5 @@ function TopBar() {
   );
 }
 
+TopBar.displayName = 'TopBar';
 export { TopBar };

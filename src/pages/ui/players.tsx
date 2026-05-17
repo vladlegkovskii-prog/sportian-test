@@ -14,4 +14,5 @@ function Players() {
   );
 }
 
+Players.displayName = 'Players';
 export { Players };

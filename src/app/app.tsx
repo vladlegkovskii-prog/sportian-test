@@ -16,4 +16,5 @@ function App() {
   );
 }
 
+App.displayName = 'App';
 export { App };

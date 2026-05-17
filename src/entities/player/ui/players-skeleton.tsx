@@ -59,4 +59,5 @@ function PlayersSkeleton() {
   );
 }
 
+PlayersSkeleton.displayName = 'PlayersSkeleton';
 export { PlayersSkeleton };

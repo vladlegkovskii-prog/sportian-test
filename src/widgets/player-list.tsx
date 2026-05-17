@@ -103,4 +103,5 @@ function PlayerList() {
   );
 }
 
+PlayerList.displayName = 'PlayerList';
 export { PlayerList };

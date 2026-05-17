@@ -46,4 +46,5 @@ function LocalPlayerSearch() {
   );
 }
 
+LocalPlayerSearch.displayName = 'LocalPlayerSearch';
 export { LocalPlayerSearch };

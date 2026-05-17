@@ -53,4 +53,5 @@ function ViewPlayerDetails(props: ViewPlayerDetailsProps) {
   );
 }
 
+ViewPlayerDetails.displayName = 'ViewPlayerDetails';
 export { ViewPlayerDetails };

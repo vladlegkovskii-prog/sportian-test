@@ -7,7 +7,7 @@ type PlayerDetailsProps = {
   player: Player;
 };
 
-export function PlayerDetails(props: PlayerDetailsProps) {
+function PlayerDetails(props: PlayerDetailsProps) {
   const { player } = props;
   const coreAttributes = [
     { label: 'PACE', value: player.stats.pac.value },
@@ -72,3 +72,6 @@ export function PlayerDetails(props: PlayerDetailsProps) {
     </Paper>
   );
 }
+
+PlayerDetails.displayName = 'PlayerDetails';
+export { PlayerDetails };

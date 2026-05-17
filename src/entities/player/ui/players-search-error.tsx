@@ -26,4 +26,5 @@ function PlayersSearchError(props: PlayersSearchErrorProps) {
   );
 }
 
+PlayersSearchError.displayName = 'PlayersSearchError';
 export { PlayersSearchError };

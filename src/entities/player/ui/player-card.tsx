@@ -6,7 +6,7 @@ type PlayerCardProps = {
   player: Player;
 };
 
-export function PlayerCard(props: PlayerCardProps) {
+function PlayerCard(props: PlayerCardProps) {
   const { player } = props;
   const age = calculateAge(player.birthdate);
 
@@ -58,3 +58,6 @@ export function PlayerCard(props: PlayerCardProps) {
     </Card>
   );
 }
+
+PlayerCard.displayName = 'PlayerCard';
+export { PlayerCard };

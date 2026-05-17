@@ -39,4 +39,5 @@ function NoPlayersFound(props: NoPlayersFoundProps) {
   );
 }
 
+NoPlayersFound.displayName = 'NoPlayersFound';
 export { NoPlayersFound };
