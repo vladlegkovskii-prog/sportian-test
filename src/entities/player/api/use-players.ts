@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
 import type { EaApiResponse } from '../../../shared/model/types.ts';
 import type { Player } from '../model/types.ts';
 
@@ -27,14 +28,17 @@ function usePlayers() {
       },
     });
 
-  const players: Player[] = [];
-  if (data?.pages) {
-    for (let i = 0; i < data.pages.length; i++) {
-      for (let j = 0; j < data.pages[i].items.length; j++) {
-        players.push(data.pages[i].items[j]);
+  const players = useMemo(() => {
+    const result: Player[] = [];
+    if (data?.pages) {
+      for (let i = 0; i < data.pages.length; i++) {
+        for (let j = 0; j < data.pages[i].items.length; j++) {
+          result.push(data.pages[i].items[j]);
+        }
       }
     }
-  }
+    return result;
+  }, [data]);
 
   return {
     players,
