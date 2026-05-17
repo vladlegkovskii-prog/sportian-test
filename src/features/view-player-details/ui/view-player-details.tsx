@@ -37,6 +37,7 @@ function ViewPlayerDetails(props: ViewPlayerDetailsProps) {
           }}
         >
           <IconButton
+            aria-label="close"
             onClick={handleClose}
             sx={{
               position: 'absolute',
