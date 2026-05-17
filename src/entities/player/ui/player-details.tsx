@@ -1,6 +1,6 @@
 import { Box, Typography, Stack, Divider, Paper, Container, Grid } from '@mui/material';
-import { calculateAge } from '../../../shared/utils/calculate-age.ts';
-import { getFootLabel } from '../../../shared/utils/get-foot-label.ts';
+import { calculateAge } from '../../../shared/lib/calculate-age.ts';
+import { getFootLabel } from '../../../shared/lib/get-foot-label.ts';
 import type { Player } from '../model/types.ts';
 
 type PlayerDetailsProps = {

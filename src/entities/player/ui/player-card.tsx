@@ -1,5 +1,5 @@
 import { Box, Typography, Card, CardContent, CardMedia, Stack } from '@mui/material';
-import { calculateAge } from '../../../shared/utils/calculate-age.ts';
+import { calculateAge } from '../../../shared/lib/calculate-age.ts';
 import type { Player } from '../model/types.ts';
 
 type PlayerCardProps = {
