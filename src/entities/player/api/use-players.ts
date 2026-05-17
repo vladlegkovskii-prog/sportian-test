@@ -6,9 +6,7 @@ import type { Player } from '../model/types.ts';
 const LIMIT = 30;
 
 const fetchPlayers = async ({ pageParam }: { pageParam: number }): Promise<EaApiResponse> => {
-  const response = await fetch(
-    `https://drop-api.ea.com/rating/ea-sports-fc?locale=en&limit=30&offset=${pageParam}`
-  );
+  const response = await fetch(`/api/rating/ea-sports-fc?locale=en&limit=30&offset=${pageParam}`);
 
   return response.json();
 };

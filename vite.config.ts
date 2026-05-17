@@ -10,4 +10,13 @@ export default defineConfig({
     setupFiles: './src/setup-tests.ts',
     css: true,
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://drop-api.ea.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 });
