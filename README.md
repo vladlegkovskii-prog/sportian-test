@@ -72,7 +72,7 @@
 
 ### What you would improve with more time
 
-- There is no perfect way to test core functionality like pagination without either relying heavily on the mocks at the unit level or building browser interceptions at the integration level because CORS (the EA API does not support browser CORS) would not allow an application to make an endpoint call to the _EA_ server. Given more time, testing strategy and coverage can be significantly improved.
+- There is no perfect way to test core functionality like pagination without either relying heavily on the mocks at the unit level or building browser interceptions at the integration level because CORS (the EA API does not support browser CORS) would not allow an application to make an endpoint call to the _EA_ server. Given more time, integration testing strategy and coverage can be significantly improved. Currently, the app relies on unit testing only.
 
 ### Libs/tools used
 

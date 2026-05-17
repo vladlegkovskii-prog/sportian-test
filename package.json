@@ -10,15 +10,14 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test": "vitest",
-    "test:run": "vitest --run",
+    "test": "vitest --run",
     "test:ui": "vitest --ui",
     "typecheck": "tsc -b --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",
     "preview": "vite preview",
-    "check:all": "npm run typecheck && npm run lint && npm run test:run && npm run build"
+    "check:all": "npm run typecheck && npm run lint && npm run test && npm run build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
