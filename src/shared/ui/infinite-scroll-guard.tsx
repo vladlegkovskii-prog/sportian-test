@@ -14,7 +14,6 @@ function InfiniteScrollGuard(props: InfiniteScrollGruardProps) {
     if (!enabled) {
       return;
     }
-
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -27,13 +26,11 @@ function InfiniteScrollGuard(props: InfiniteScrollGruardProps) {
     if (guardComponent.current) {
       observer.observe(guardComponent.current);
     }
-
     return () => observer.disconnect();
   }, [enabled, onIntersect]);
 
   return (
     <Box
-      className="vlad-hello"
       ref={guardComponent}
       sx={{ display: 'flex', justifyContent: 'center', py: 3, width: '100%' }}
     >

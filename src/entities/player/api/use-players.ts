@@ -34,7 +34,7 @@ function usePlayers() {
         players.push(data.pages[i].items[j]);
       }
     }
-  } // direct index access, no iterator overhead
+  }
 
   return {
     players,

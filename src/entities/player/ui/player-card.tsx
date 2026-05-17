@@ -26,7 +26,6 @@ export function PlayerCard(props: PlayerCardProps) {
           sx={{ height: '100%', objectFit: 'cover' }}
         />
       </Box>
-
       <CardContent sx={{ flex: 1, py: 1 }}>
         <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
           <Stack sx={{ flex: 1 }}>

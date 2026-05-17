@@ -26,7 +26,6 @@ function ViewPlayerDetails(props: ViewPlayerDetailsProps) {
       <Box component="div" onClick={handleOpen} sx={{ display: 'contents', cursor: 'pointer' }}>
         {children}
       </Box>
-
       <Modal open={isOpen} onClose={handleClose}>
         <Box
           sx={{

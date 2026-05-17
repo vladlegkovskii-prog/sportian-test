@@ -39,7 +39,6 @@ export function PlayerDetails(props: PlayerDetailsProps) {
             <Typography sx={{ color: 'text.secondary' }}>{player.height} CM</Typography>
           </Stack>
         </Stack>
-
         <Box sx={{ mb: 5 }}>
           <Typography variant="h5">Core Attributes</Typography>
           <Grid container spacing={1.5}>
@@ -62,7 +61,6 @@ export function PlayerDetails(props: PlayerDetailsProps) {
         <Box>
           <Typography variant="h5">Physical Metrics</Typography>
           <Divider />
-
           <Stack sx={{ py: 2 }}>
             <Stack direction="row" sx={{ justifyContent: 'space-between' }}>
               <Typography color="text.secondary">Preferred Foot</Typography>

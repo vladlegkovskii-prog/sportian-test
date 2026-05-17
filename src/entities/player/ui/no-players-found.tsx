@@ -24,15 +24,12 @@ function NoPlayersFound(props: NoPlayersFoundProps) {
           <Box>
             <SearchOffIcon />
           </Box>
-
           <Box>
             <Typography variant="h5">No players found</Typography>
             <Typography variant="body2" color="text.secondary">
-              Adjust your scouting filters or search criteria to view available roster
-              prospects.{' '}
+              Adjust your scouting filters or search criteria to view available roster prospects.
             </Typography>
           </Box>
-
           <Button variant="contained" color="primary" onClick={onClick}>
             CLEAR FILTERS
           </Button>
