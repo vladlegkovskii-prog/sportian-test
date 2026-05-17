@@ -48,6 +48,7 @@ describe('usePlayers', () => {
 
   it('should return players after successful fetch', async () => {
     mockFetch.mockResolvedValueOnce({
+      ok: true,
       json: () => Promise.resolve(responseMock),
     });
 
@@ -78,6 +79,7 @@ describe('usePlayers', () => {
 
   it('should correctly determine hasNextPage based on totalItems', async () => {
     mockFetch.mockResolvedValueOnce({
+      ok: true,
       json: () => Promise.resolve(responseMock),
     });
 
@@ -97,6 +99,7 @@ describe('usePlayers', () => {
     };
 
     mockFetch.mockResolvedValueOnce({
+      ok: true,
       json: () => Promise.resolve(completeResponseMock),
     });
 
@@ -111,6 +114,7 @@ describe('usePlayers', () => {
 
   it('should call fetch with correct URL parameters', async () => {
     mockFetch.mockResolvedValueOnce({
+      ok: true,
       json: () => Promise.resolve(responseMock),
     });
 
@@ -126,10 +130,12 @@ describe('usePlayers', () => {
   it('should handle multiple pages correctly', async () => {
     mockFetch
       .mockResolvedValueOnce({
+        ok: true,
         json: () => Promise.resolve(responseMock),
       })
 
       .mockResolvedValueOnce({
+        ok: true,
         json: () =>
           Promise.resolve({
             items: [responseMock.items[0]],

@@ -8,6 +8,10 @@ const LIMIT = 30;
 const fetchPlayers = async ({ pageParam }: { pageParam: number }): Promise<EaApiResponse> => {
   const response = await fetch(`/api/rating/ea-sports-fc?locale=en&limit=30&offset=${pageParam}`);
 
+  if (!response.ok) {
+    throw new Error(`Failed to fetch players: ${response.status} ${response.statusText}`);
+  }
+
   return response.json();
 };
 
