@@ -48,7 +48,7 @@
 ### Architecture explanation
 
 - The domain of the application is to visually represent a list of player cards.
-- FSD helps are to represent this feature as multiple layers, that are then stacked together in specific order: `entities` -> `features` -> `widgets` -> `pages`.
+- FSD helps to represent the feature as multiple layers that are then stacked together in specific order: `entities` -> `features` -> `widgets` -> `pages`.
 - This strict import order mandate guarantees one directional flow of the interfaces, providing the project with clear organisation and scalability patterns.
 - Strict `eslint` superset of rules (_eslint-unicorn_) and `husky` + `lint-staged` perform as a code quality guard.
 
